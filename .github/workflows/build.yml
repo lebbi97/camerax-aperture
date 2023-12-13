@@ -47,13 +47,10 @@ jobs:
         pushd frameworks/support
         git fetch aosp 3fc8f444693fc413fdc0152aadc3e555837c1a9e
         git checkout FETCH_HEAD
-        git am $GITHUB_WORKSPACE/patches/0001-Add-hacky-way-for-us-to-make-certain-camera-IDs-back.patch
-        git am $GITHUB_WORKSPACE/patches/0001-Downgrade-compile-sdk-to-android-33.patch
         git fetch https://android.googlesource.com/platform/frameworks/support refs/changes/34/2828434/2 && git cherry-pick FETCH_HEAD # Upgrade to Gradle 8.4 stable
         popd
         pushd prebuilts/fullsdk-linux/platforms
         git fetch --unshallow
-        git checkout 3fc8f444693fc413fdc0152aadc3e555837c1a9e android-33
         popd
 
     - name: Build
